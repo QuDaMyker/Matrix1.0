@@ -16,14 +16,15 @@ namespace ConsoleApp1
         static ComboBox cbBoxCal = new ComboBox();
         static Label lb = new Label();
         static List<TextBox> myTextboxList = new List<TextBox>();
-        static TextBox[,] tbLeft = new TextBox[5, 5];
-        static TextBox[,] tbRight = new TextBox[5, 5];
-        static TextBox[,] tbResult = new TextBox[5, 5];
+        
 
         static int row = 2;
         static int col = 2;
         static int _row = 2;
         static int _col = 2;
+        static TextBox[,] tbLeft = new TextBox[row, col];
+        static TextBox[,] tbRight = new TextBox[row, col];
+        static TextBox[,] tbResult = new TextBox[row, col];
         static Panel panel = new Panel();
         static FlowLayoutPanel flowLayoutPanelLeft = new FlowLayoutPanel();
         static FlowLayoutPanel flowLayoutPanelRight = new FlowLayoutPanel();
@@ -145,9 +146,6 @@ namespace ConsoleApp1
                 }
             }
 
-            
-
-
             mainForm.Show();
             Application.Run(mainForm);
         }
@@ -156,9 +154,12 @@ namespace ConsoleApp1
             _row = Convert.ToInt16(cbBox.Text);
             _col = _row;
             removeArray(row, col);
-            createArray(_row, _col);
             row = _row;
             col = _col;
+            tbLeft = new TextBox[row, col];
+            tbRight = new TextBox[row, col];
+            tbResult = new TextBox[row, col];
+            createArray(_row, _col);
         }
         static void removeArray(int row, int col)
         {
